@@ -1,0 +1,43 @@
+# 1. 라이브러리 (각 폴더 기준)
+backend/node_modules/
+frontend/node_modules/
+node_modules/
+
+# 2. 보안 및 환경변수 (어디에 있든 다 차단)
+.env
+**/.env
+*.local
+
+# 3. 프론트엔드 빌드 및 로그 (경로 수정 완료)
+frontend/dist/
+frontend/dist-ssr/
+frontend/build/
+frontend/logs/
+frontend/*.log
+
+# 4. 백엔드 빌드 및 Prisma (경로 수정 완료)
+backend/dist/
+backend/src/generated/prisma
+backend/logs/
+backend/*.log
+
+# 5. 공통 로그 및 시스템 파일
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.DS_Store
+Thumbs.db
+
+# 6. 에디터 설정 (VS Code 및 기타)
+.vscode/
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
