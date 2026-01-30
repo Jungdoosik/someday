@@ -19,6 +19,14 @@ export const createThought = async (data: {
 // 모든 데이터를 가져오는 로직 (추가)
 export const getAllThoughts = async () => {
   return await prisma.thought.findMany({
+    where: { deleteYn: "N" },
     orderBy: { createdAt: "desc" }, // 최신순 정렬
+  });
+};
+
+export const deleteThought = async (id: number) => {
+  return await prisma.thought.update({
+    where: { id: Number(id) },
+    data: { deleteYn: "Y" },
   });
 };

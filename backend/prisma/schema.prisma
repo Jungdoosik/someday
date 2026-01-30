@@ -20,4 +20,5 @@ model Thought {
   content String? 
   createdAt DateTime @default(now())
   knockDt String?
+  deleteYn String @default("N")
 }
