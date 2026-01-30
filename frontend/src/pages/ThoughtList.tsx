@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./ThoughtList,.css";
 
 interface Thought {
   id: number;
@@ -26,10 +27,9 @@ function ThoughtList() {
       });
   }, []);
 
-  if (loading) return <div>재나이가 데이터를 가져오는 중입니다.</div>;
+  if (loading) return <div>데이터를 가져오는 중입니다.</div>;
 
   const handleDelete = async (id: number) => {
-    console.log(id);
     if (!window.confirm("이 생각을 정리하시겠습니까?")) return;
 
     try {
@@ -48,6 +48,10 @@ function ThoughtList() {
       console.error("삭제 실패", error);
       alert("삭제 중 오류가 발생했습니다.");
     }
+  };
+
+  const handleModify = (id: number) => {
+    navigate(`/modify/${id}`);
   };
 
   return (
@@ -78,6 +82,12 @@ function ThoughtList() {
               </div>
               <div className="card-footer">
                 <small>📅 {item.knockDt || "알림 없음"}</small>
+                <button
+                  className="modify-btn"
+                  onClick={() => handleModify(item.id)}
+                >
+                  수정
+                </button>
                 <button
                   className="delete-btn"
                   onClick={() => handleDelete(item.id)}

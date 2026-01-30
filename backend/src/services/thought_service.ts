@@ -30,3 +30,9 @@ export const deleteThought = async (id: number) => {
     data: { deleteYn: "Y" },
   });
 };
+
+export const getThoughts = async (id: number) => {
+  return await prisma.thought.findUnique({
+    where: { id: Number(id) },
+  });
+};

@@ -1,12 +1,23 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import "./ThoughtWrite.css";
 
-const ThoughtWrite = () => {
+const ThoughtModify = () => {
+  const { id } = useParams();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [knockDt, setKnockDt] = useState("");
   const navigate = useNavigate(); // 이동을 위한 도구
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/thought/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setTitle(data.title);
+        setContent(data.content);
+        setKnockDt(data.knockDt);
+      });
+  }, [id]);
 
   const handleSave = async () => {
     if (!title) return alert("제목을 입력해주세요.");
@@ -58,10 +69,10 @@ const ThoughtWrite = () => {
           />
         </div>
         <button className="save-btn" onClick={handleSave}>
-          생각 저장하기
+          생각 수정하기
         </button>
       </div>
     </div>
   );
 };
-export default ThoughtWrite;
+export default ThoughtModify;

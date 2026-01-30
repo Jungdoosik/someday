@@ -1,0 +1,55 @@
+/* 입력 섹션 스타일 */
+
+/* 카드 그리드 스타일 */
+.thought-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.thought-card {
+  background: var(--button-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
+}
+
+.thought-card:hover {
+  transform: translateY(-5px);
+}
+
+.thought-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+}
+
+.thought-card p {
+  color: #bbb;
+  line-height: 1.6;
+}
+
+.card-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border-color);
+  padding-top: 15px;
+}
+
+.delete-btn {
+  background: transparent;
+  color: #ff4d4d;
+  border: 1px solid #ff4d4d;
+  padding: 5px 12px;
+  font-size: 0.8rem;
+}
+
+.delete-btn:hover {
+  background: #ff4d4d;
+  color: white;
+}

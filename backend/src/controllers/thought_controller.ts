@@ -47,3 +47,13 @@ export const deleteThought = async (req: Request, res: Response) => {
     res.status(500).json({ error: "삭제실패" });
   }
 };
+
+// 수정기능
+export const modifyThought = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  try {
+    const thought = await ThoughtService.getThoughts(Number(id));
+    res.status(200).json(thought);
+  } catch (error) {}
+};
