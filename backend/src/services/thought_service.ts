@@ -31,8 +31,20 @@ export const deleteThought = async (id: number) => {
   });
 };
 
-export const getThoughts = async (id: number) => {
+export const getThought = async (id: number) => {
   return await prisma.thought.findUnique({
     where: { id: Number(id) },
+  });
+};
+
+export const modifyThought = async (
+  id: number,
+  title: string,
+  content: string,
+  knockDt: string,
+) => {
+  return await prisma.thought.update({
+    where: { id: Number(id) },
+    data: { title, content, knockDt },
   });
 };

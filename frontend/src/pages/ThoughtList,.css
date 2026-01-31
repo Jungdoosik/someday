@@ -30,6 +30,14 @@
 .thought-card p {
   color: #bbb;
   line-height: 1.6;
+
+  /* 👇 이 부분을 추가하세요! */
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  /* 혹시나 내용이 너무 적을 때 박스가 찌그러지는 게 싫다면? */
+  /* min-height: 4.8em; */
 }
 
 .card-footer {
@@ -52,4 +60,20 @@
 .delete-btn:hover {
   background: #ff4d4d;
   color: white;
+}
+
+.modify-btn {
+  background-color: #5aa6c4; /* 하늘색 배경 */
+  color: white; /* 글자색은 흰색 */
+  border: none; /* 테두리 제거 */
+  padding: 8px 16px; /* 안쪽 여백 */
+  border-radius: 8px; /* 둥근 모서리 */
+  cursor: pointer; /* 마우스 올리면 손가락 모양 */
+  font-size: 0.8rem; /* 글자 굵게 */
+  transition: background-color 0.2s; /* 부드러운 색상 변화 */
+}
+
+/* 마우스 올렸을 때 살짝 더 진한 하늘색으로! */
+.modify-btn:hover {
+  background-color: #5fbce0;
 }

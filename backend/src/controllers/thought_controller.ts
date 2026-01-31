@@ -17,7 +17,6 @@ export const createThought = async (req: Request, res: Response) => {
     // 3. 성공 응답 보내기
     res.status(201).json(newThought);
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: "생각을 저장하는 중 오류가 발생했습니다." });
   }
 };
@@ -28,7 +27,6 @@ export const getThoughts = async (req: Request, res: Response) => {
     const thoughts = await ThoughtService.getAllThoughts();
     res.status(200).json(thoughts);
   } catch (error) {
-    console.log(error);
     res
       .status(500)
       .json({ error: "데이터를 불러오는 중 오류가 발생했습니다." });
@@ -48,12 +46,35 @@ export const deleteThought = async (req: Request, res: Response) => {
   }
 };
 
-// 수정기능
-export const modifyThought = async (req: Request, res: Response) => {
+// detail페이지
+export const getThought = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   try {
-    const thought = await ThoughtService.getThoughts(Number(id));
+    const thought = await ThoughtService.getThought(Number(id));
     res.status(200).json(thought);
-  } catch (error) {}
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "데이터를 불러오는 중 오류가 발생했습니다." });
+  }
+};
+
+export const modifyThought = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const { title, content, knockDt } = req.body;
+
+  try {
+    const modifyThought = await ThoughtService.modifyThought(
+      Number(id),
+      title,
+      content,
+      knockDt,
+    );
+    res.status(200).json(modifyThought);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "데이터를 수정하는 중 오류가 발생했습니다." });
+  }
 };

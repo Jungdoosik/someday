@@ -19,14 +19,17 @@ const ThoughtModify = () => {
       });
   }, [id]);
 
-  const handleSave = async () => {
+  const handleModify = async (id: number) => {
     if (!title) return alert("제목을 입력해주세요.");
     try {
-      const res = await fetch("http://localhost:3000/thought/saveThought", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title, content, knockDt }),
-      });
+      const res = await fetch(
+        `http://localhost:3000/thought/modifyThought/${id}`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ title, content, knockDt }),
+        },
+      );
 
       if (res.ok) {
         navigate("/"); // 저장 후 메인 페이지로 슝!
@@ -68,7 +71,7 @@ const ThoughtModify = () => {
             onChange={(e) => setKnockDt(e.target.value)}
           />
         </div>
-        <button className="save-btn" onClick={handleSave}>
+        <button className="save-btn" onClick={() => handleModify(Number(id))}>
           생각 수정하기
         </button>
       </div>
