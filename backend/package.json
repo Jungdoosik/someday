@@ -15,12 +15,14 @@
     "@prisma/client": "^6.19.2",
     "cors": "^2.8.6",
     "express": "^5.2.1",
+    "node-schedule": "^2.1.1",
     "prisma": "^6.19.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^25.0.10",
+    "@types/node-schedule": "^2.1.8",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }

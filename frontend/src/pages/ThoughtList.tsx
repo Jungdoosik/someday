@@ -81,19 +81,23 @@ function ThoughtList() {
                 <p>{item.content}</p>
               </div>
               <div className="card-footer">
-                <small>📅 {item.knockDt || "알림 없음"}</small>
-                <button
-                  className="modify-btn"
-                  onClick={() => handleModify(item.id)}
-                >
-                  수정
-                </button>
-                <button
-                  className="delete-btn"
-                  onClick={() => handleDelete(item.id)}
-                >
-                  정리
-                </button>
+                <small>
+                  📅 {item.knockDt?.replace("T", " ") || "알림 없음"}
+                </small>
+                <div>
+                  <button
+                    className="modify-btn"
+                    onClick={() => handleModify(item.id)}
+                  >
+                    수정
+                  </button>
+                  <button
+                    className="delete-btn"
+                    onClick={() => handleDelete(item.id)}
+                  >
+                    정리
+                  </button>
+                </div>
               </div>
             </div>
           ))}

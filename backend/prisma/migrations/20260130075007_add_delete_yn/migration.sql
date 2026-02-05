@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE `thought` ADD COLUMN `deleteYn` VARCHAR(191) NOT NULL DEFAULT 'N';
